@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tentang Kami - POJOK MAZA</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      font-family: 'Inter', sans-serif;
+      background: #f0faff;
+      color: #023047;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    nav {
+      background: #219ebc;
+      padding: 1rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      color: #ffb703;
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: 1.5px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #ffb703;
+    }
+
+    header {
+      background: linear-gradient(135deg, #8ecae6, #219ebc);
+      color: white;
+      padding: 4rem 3rem 3rem;
+      text-align: center;
+      border-radius: 0 0 40px 40px;
+      box-shadow: 0 8px 20px rgba(33, 158, 188, 0.4);
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      font-weight: 500;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    section.tentang {
+      padding: 3rem 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      margin-top: 3rem;
+    }
+
+    section.tentang h2 {
+      color: #023047;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    section.tentang p {
+      font-size: 1.05rem;
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+
+    footer {
+      background: #023047;
+      color: #ffb703;
+      text-align: center;
+      padding: 1.5rem;
+      font-weight: 500;
+      margin-top: auto;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      section.tentang {
+        padding: 2rem 1.5rem;
+        margin: 2rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">POJOK MAZA</div>
+    <div class="nav-links">
+      <a href="index.html">Beranda</a>
+      <a href="tentang.html">Tentang</a>
+      <a href="layanan.html">Layanan</a>
+      <a href="kontak.html">Kontak</a>
+    </div>
+  </nav>
+
+  <header>
+    <h1>Tentang POJOK MAZA</h1>
+    <p>Menjadi teman belajar digital yang menyenangkan dan penuh semangat untuk semua.</p>
+  </header>
+
+  <section class="tentang">
+    <h2>Halo, Selamat datang di POJOK MAZA!</h2>
+    <p>Di sini, kami nggak cuma berbagi info seputar dunia pendidikan, tapi juga cerita, tips, dan inspirasi yang bikin belajar jadi lebih asyik dan gampang dipahami.</p>
+    <p>Kami percaya belajar itu bukan cuma soal nilai, tapi juga semangat dan rasa ingin tahu yang terus tumbuh. Makanya, kami hadir buat jadi teman kamu dalam perjalanan belajar, baik untuk siswa, guru, maupun orang tua.</p>
+    <p>Yuk, jelajahi berbagai artikel menarik dan konten edukasi yang kami sajikan. Semoga kamu makin semangat dan makin percaya diri buat meraih mimpi!</p>
+    <p>Kalau ada yang pengen kamu tanya atau bagikan, jangan ragu ya! Kita sama-sama belajar di sini.</p>
+  </section>
+
+  <footer>
+    &copy; 2025 POJOK MAZA • Semua Hak Dilindungi
+  </footer>
+
+</body>
+</html>

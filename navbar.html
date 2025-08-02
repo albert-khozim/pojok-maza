@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pendidikan Digital Modern - Beranda</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      font-family: 'Inter', sans-serif;
+      background: #f0faff;
+      color: #023047;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      scroll-behavior: smooth; /* Smooth scroll untuk anchor */
+    }
+
+    nav {
+      background: #219ebc;
+      padding: 1rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      color: #ffb703;
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: 1.5px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      margin-left: 2rem;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #ffb703;
+    }
+
+    /* Tombol Dark Mode Toggle */
+    #dark-mode-toggle {
+      background: #ffb703;
+      border: none;
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1rem;
+      user-select: none;
+      transition: background-color 0.3s ease;
+    }
+    #dark-mode-toggle:hover {
+      background-color: #e6a800;
+    }
+
+    /* HEADER + SLIDER */
+    header {
+      background: linear-gradient(135deg, #8ecae6, #219ebc);
+      color: white;
+      border-radius: 0 0 40px 40px;
+      box-shadow: 0 8px 20px rgba(33, 158, 188, 0.4);
+      padding: 3rem 3rem 4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      text-align: center;
+      max-width: 800px;
+      line-height: 1.2;
+      z-index: 2;
+      position: relative;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 2rem;
+      max-width: 700px;
+      text-align: center;
+      z-index: 2;
+      position: relative;
+    }
+
+    /* Video background */
+    header video#header-video {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 0 0 40px 40px;
+      z-index: 1;
+      opacity: 0.35;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* Slider Container */
+    .slider {
+      position: relative;
+      width: 90%;
+      max-width: 900px;
+      height: 350px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      margin-bottom: 3rem;
+      background: #fff;
+      z-index: 2;
+    }
+
+    .slides {
+      display: flex;
+  width: 400%;
+  height: 100%;
+  animation: slideAnim 40s linear infinite;
+  transition: transform 0.15s ease; /* smooth saat geser manual */
+  cursor: grab;
+    }
+
+    .slides img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+
+    @keyframes slideAnim {
+       0% { transform: translateX(0); }
+  100% { transform: translateX(-75%); }
+    }
+
+    /* SECTION ARTIKEL TERBARU */
+    section.articles {
+      padding: 2rem 3rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    section.articles h2 {
+      font-size: 2rem;
+      color: #023047;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    /* Search box */
+    #search-articles {
+      display: block;
+      margin: 0 auto 1.5rem auto;
+      padding: 0.5rem 1rem;
+      width: 300px;
+      max-width: 90%;
+      border-radius: 15px;
+      border: 2px solid #219ebc;
+      font-size: 1rem;
+      font-weight: 500;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+    #search-articles:focus {
+      border-color: #ffb703;
+    }
+
+    .article-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .article {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .article:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    }
+
+    .article h3 {
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: #219ebc;
+    }
+
+    .article p {
+      font-weight: 500;
+      color: #555;
+      line-height: 1.4;
+    }
+
+    /* SECTION TESTIMONI */
+    section.testimonials {
+      background: #219ebc;
+      color: white;
+      padding: 3rem 2rem;
+      margin-top: 3rem;
+      border-radius: 20px 20px 0 0;
+      box-shadow: 0 8px 20px rgba(33, 158, 188, 0.5);
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    section.testimonials h2 {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+    }
+
+    .testimonial-slider {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .testimonial {
+      min-width: 100%;
+      padding: 1rem 2rem;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    .testimonial p {
+      font-style: italic;
+      font-size: 1.1rem;
+      margin-bottom: 1.25rem;
+      line-height: 1.5;
+    }
+
+    .testimonial .author {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #ffb703;
+    }
+
+    .testimonial-controls {
+      position: absolute;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 1rem;
+    }
+
+    .testimonial-controls button {
+      background: #ffb703;
+      border: none;
+      border-radius: 50%;
+      width: 14px;
+      height: 14px;
+      cursor: pointer;
+      opacity: 0.5;
+      transition: opacity 0.3s ease;
+    }
+
+    .testimonial-controls button.active,
+    .testimonial-controls button:hover {
+      opacity: 1;
+    }
+
+    /* SECTION UPLOAD FILE */
+    section.upload {
+      max-width: 700px;
+      margin: 3rem auto 4rem;
+      padding: 2rem 2rem 3rem;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      text-align: center;
+      position: relative;
+    }
+
+    section.upload h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #023047;
+    }
+
+    .upload-area {
+      border: 2px dashed #219ebc;
+      padding: 3rem 1rem;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      color: #219ebc;
+      font-weight: 600;
+      user-select: none;
+    }
+
+    .upload-area:hover {
+      background-color: #dbeefd;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    .upload-feedback {
+      margin-top: 1rem;
+      font-weight: 500;
+      color: #023047;
+      min-height: 1.5rem;
+    }
+
+    /* Notifikasi upload sukses */
+    .upload-success {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #4caf50;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 15px;
+      font-weight: 600;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      user-select: none;
+    }
+    .upload-success.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Floating Help Button */
+    #help-btn {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #ffb703;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 2rem;
+      color: #023047;
+      cursor: pointer;
+      box-shadow: 0 6px 15px rgba(255, 183, 3, 0.6);
+      transition: background-color 0.3s ease;
+      z-index: 200;
+    }
+    #help-btn:hover {
+      background-color: #e6a800;
+    }
+
+    /* Modal Chatbot */
+    #chatbot-modal {
+      display: none;
+      position: fixed;
+      bottom: 95px;
+      right: 25px;
+      width: 320px;
+      max-width: 90vw;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+      z-index: 300;
+      flex-direction: column;
+      overflow: hidden;
+      font-family: 'Inter', sans-serif;
+      user-select: none;
+    }
+    #chatbot-modal.active {
+      display: flex;
+    }
+
+    #chatbot-header {
+      background: #219ebc;
+      color: white;
+      padding: 1rem;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    #chatbot-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    #chatbot-messages {
+      padding: 1rem;
+      height: 250px;
+      overflow-y: auto;
+      font-size: 0.9rem;
+      background: #f0faff;
+      color: #023047;
+      flex-grow: 1;
+      scroll-behavior: smooth;
+    }
+
+    .chatbot-message {
+      margin-bottom: 0.8rem;
+      line-height: 1.3;
+    }
+    .chatbot-message.user {
+      text-align: right;
+      font-weight: 600;
+      color: #219ebc;
+    }
+    .chatbot-message.bot {
+      text-align: left;
+      font-style: italic;
+      color: #555;
+    }
+
+    #chatbot-input-area {
+      display: flex;
+      border-top: 1px solid #ddd;
+    }
+    #chatbot-input {
+      flex-grow: 1;
+      border: none;
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      outline: none;
+    }
+    #chatbot-send {
+      background: #219ebc;
+      border: none;
+      color: white;
+      padding: 0 1rem;
+      cursor: pointer;
+      font-weight: 700;
+      transition: background-color 0.3s ease;
+    }
+    #chatbot-send:hover {
+      background-color: #1a8bbf;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #023047;
+      color: #ffb703;
+      padding: 1.2rem 3rem;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1rem;
+      box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2);
+      margin-top: auto;
+    }
+
+    /* DARK MODE STYLES */
+    body.dark-mode {
+      background: #121212;
+      color: #e0e0e0;
+    }
+    body.dark-mode nav {
+      background: #333;
+      box-shadow: 0 4px 10px rgba(255, 183, 3, 0.3);
+    }
+    body.dark-mode .logo {
+      color: #ffc107;
+    }
+    body.dark-mode .nav-links a {
+      color: #ffc107;
+    }
+    body.dark-mode header {
+      background: linear-gradient(135deg, #005f73, #0a9396);
+      box-shadow: 0 8px 20px rgba(10, 147, 150, 0.7);
+      color: #e0e0e0;
+    }
+    body.dark-mode section.articles .article {
+      background: #1e1e1e;
+      box-shadow: 0 6px 15px rgba(255, 255, 255, 0.05);
+      color: #ddd;
+    }
+    body.dark-mode section.testimonials {
+      background: #005f73;
+      box-shadow: 0 8px 20px rgba(0, 95, 115, 0.7);
+      color: #e0e0e0;
+    }
+    body.dark-mode section.upload {
+      background: #1e1e1e;
+      box-shadow: 0 6px 20px rgba(255, 255, 255, 0.05);
+      color: #e0e0e0;
+    }
+    body.dark-mode footer {
+      background: #111;
+      color: #ffc107;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav {
+        padding: 1rem 1.5rem;
+      }
+      header {
+        padding: 2rem 1.5rem 3rem;
+      }
+      .slider {
+        height: 250px;
+      }
+      section.articles {
+        padding: 2rem 1.5rem;
+      }
+      section.testimonials {
+        padding: 2rem 1rem;
+      }
+      section.upload {
+        padding: 1.5rem 1rem 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo" tabindex="0">POJOK MAZA</div>
+  <div class="nav-links">
+    <a href="index.html">Beranda</a>
+    <a href="tentang.html">Tentang</a>
+    <a href="layanan.html">Layanan</a>
+    <a href="kontak.html">Kontak</a>
+    </div>
+    <button id="dark-mode-toggle" aria-label="Toggle Dark Mode">🌙</button>
+  </nav>
+
+  <header> 
+  <video autoplay muted loop playsinline id="header-video" aria-hidden="true">
+    <source src="https://cdn.pixabay.com/vimeo/350306670/blue-gradient-background-49833.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  <h1>Selamat Datang di Portal Pendidikan Digital Modern</h1>
+  <p>Tingkatkan kemampuanmu dengan artikel terbaru dan belajar dari pengalaman orang lain.</p>
+
+  <div class="slider" aria-label="Slider Gambar Artikel Terbaru">
+    <div class="slides" role="list">
+      <img src="c:\Users\LENOV\Downloads\DSC05114.jpg" alt="Deskripsi gambar 1" role="listitem" />
+      <img src="c:\Users\LENOV\Downloads\SKT_6778-1-1.jpg" alt="Deskripsi gambar 2" role="listitem" />
+      <img src="c:\Users\LENOV\Downloads\DSC03691.jpg" alt="Deskripsi gambar 3" role="listitem" />
+      <img src="c:\Users\LENOV\Downloads\gah.png" alt="Deskripsi gambar 4" role="listitem" />
+    </div>
+  </div>
+</header>
+
+  <section id="articles" class="articles" aria-label="Artikel terbaru">
+    <h2>Artikel Terbaru</h2>
+    <input type="search" id="search-articles" placeholder="Cari artikel..." aria-label="Cari artikel" />
+    <div class="article-list" id="article-list" role="list">
+      <article class="article" role="listitem" tabindex="0">
+        <h3>Pentingnya Literasi Digital di Era Modern</h3>
+        <p>Memahami literasi digital adalah kunci sukses di dunia yang semakin terhubung.</p>
+      </article>
+      <article class="article" role="listitem" tabindex="0">
+        <h3>5 Tips Belajar Efektif dari Rumah</h3>
+        <p>Strategi belajar yang dapat meningkatkan konsentrasi dan hasil belajar Anda.</p>
+      </article>
+      <article class="article" role="listitem" tabindex="0">
+        <h3>Menguasai Coding untuk Pemula</h3>
+        <p>Langkah awal belajar pemrograman yang menyenangkan dan mudah dipahami.</p>
+      </article>
+      <article class="article" role="listitem" tabindex="0">
+        <h3>Manfaat Workshop Online bagi Pelajar</h3>
+        <p>Bagaimana workshop online dapat meningkatkan keterampilan praktis Anda.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="testimonials" class="testimonials" aria-label="Testimoni pengguna">
+    <h2>Testimoni</h2>
+    <div class="testimonial-slider" id="testimonial-slider" role="list">
+      <div class="testimonial" role="listitem">
+        <p>"Platform ini sangat membantu saya memahami materi dengan cara yang menyenangkan."</p>
+        <div class="author">– Rina S.</div>
+      </div>
+      <div class="testimonial" role="listitem">
+        <p>"Artikel dan workshopnya sangat praktis dan aplikatif, saya jadi lebih percaya diri."</p>
+        <div class="author">– Andi K.</div>
+      </div>
+      <div class="testimonial" role="listitem">
+        <p>"Upload tugas jadi mudah dan cepat, terima kasih atas kemudahan ini."</p>
+        <div class="author">– Sari L.</div>
+      </div>
+    </div>
+    <div class="testimonial-controls" aria-label="Kontrol slider testimoni">
+      <button aria-label="Testimoni 1" class="active"></button>
+      <button aria-label="Testimoni 2"></button>
+      <button aria-label="Testimoni 3"></button>
+    </div>
+  </section>
+
+  <section id="upload" class="upload" aria-label="Upload file">
+    <h2>Upload File Tugas</h2>
+    <label for="file-upload" class="upload-area" tabindex="0" aria-describedby="upload-instruction">
+      Klik atau seret file ke sini untuk upload
+    </label>
+    <input type="file" id="file-upload" aria-describedby="upload-instruction" />
+    <div id="upload-feedback" class="upload-feedback" aria-live="polite" role="status"></div>
+    <div id="upload-success" class="upload-success" role="alert" aria-live="assertive">Upload berhasil!</div>
+  </section>
+
+  <button id="help-btn" aria-label="Bantuan Chatbot" title="Bantuan Chatbot">?</button>
+
+  <!-- Chatbot Modal -->
+  <div id="chatbot-modal" role="dialog" aria-modal="true" aria-labelledby="chatbot-header">
+    <div id="chatbot-header">
+      <span>Chatbot Bantuan</span>
+      <button id="chatbot-close" aria-label="Tutup chatbot">&times;</button>
+    </div>
+    <div id="chatbot-messages" tabindex="0" aria-live="polite" aria-relevant="additions"></div>
+    <form id="chatbot-form" aria-label="Form chat chatbot">
+      <div id="chatbot-input-area">
+        <input type="text" id="chatbot-input" placeholder="Ketik pertanyaanmu..." autocomplete="off" required />
+        <button type="submit" id="chatbot-send" aria-label="Kirim pesan chatbot">Kirim</button>
+      </div>
+    </form>
+  </div>
+
+  <footer>
+    &copy; 2025 Pendidikan Digital. Semua hak cipta dilindungi.
+  </footer>
+
+  <script>
+    // --- DARK MODE TOGGLE ---
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+
+    darkModeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      if(document.body.classList.contains('dark-mode')) {
+        darkModeToggle.textContent = '☀️';
+      } else {
+        darkModeToggle.textContent = '🌙';
+      }
+    });
+
+    // --- SMOOTH SCROLL FOR INTERNAL LINKS (ALREADY via CSS scroll-behavior) ---
+    // But adding JS fallback for older browsers or smooth scroll enhancement
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target) {
+          target.scrollIntoView({behavior: 'smooth'});
+          target.focus({preventScroll:true});
+        }
+      });
+    });
+
+    // --- SEARCH ARTIKEL ---
+    const searchInput = document.getElementById('search-articles');
+    const articles = document.querySelectorAll('.article-list .article');
+
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase();
+      articles.forEach(article => {
+        const title = article.querySelector('h3').textContent.toLowerCase();
+        const desc = article.querySelector('p').textContent.toLowerCase();
+        if(title.includes(query) || desc.includes(query)) {
+          article.style.display = '';
+        } else {
+          article.style.display = 'none';
+        }
+      });
+    });
+
+    // --- TESTIMONIAL SLIDER ---
+    const testimonials = document.querySelectorAll('.testimonial');
+    const testimonialSlider = document.getElementById('testimonial-slider');
+    const controls = document.querySelectorAll('.testimonial-controls button');
+    let currentTesti = 0;
+
+    function updateTestimonial(index) {
+      if(index < 0) index = testimonials.length - 1;
+      else if(index >= testimonials.length) index = 0;
+      currentTesti = index;
+      testimonialSlider.style.transform = `translateX(-${index * 100}%)`;
+      controls.forEach((btn, i) => {
+        btn.classList.toggle('active', i === index);
+      });
+    }
+
+    controls.forEach((btn, i) => {
+      btn.addEventListener('click', () => {
+        updateTestimonial(i);
+      });
+    });
+
+    // Auto-slide every 5 seconds
+    setInterval(() => {
+      updateTestimonial(currentTesti + 1);
+    }, 5000);
+
+    // --- UPLOAD FILE ---
+    const uploadArea = document.querySelector('.upload-area');
+    const fileInput = document.getElementById('file-upload');
+    const uploadFeedback = document.getElementById('upload-feedback');
+    const uploadSuccess = document.getElementById('upload-success');
+
+    uploadArea.addEventListener('click', () => {
+      fileInput.click();
+    });
+
+    uploadArea.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        fileInput.click();
+      }
+    });
+
+    fileInput.addEventListener('change', () => {
+      const file = fileInput.files[0];
+      if(!file) return;
+
+      // Simple validation: max 10MB, allowed types (pdf, docx, jpg, png)
+      const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'image/jpeg', 'image/png'];
+      if(!allowedTypes.includes(file.type)) {
+        uploadFeedback.textContent = 'Format file tidak didukung. Gunakan PDF, DOCX, JPG, atau PNG.';
+        uploadSuccess.classList.remove('show');
+        return;
+      }
+
+      if(file.size > 10 * 1024 * 1024) {
+        uploadFeedback.textContent = 'Ukuran file terlalu besar (maks 10MB).';
+        uploadSuccess.classList.remove('show');
+        return;
+      }
+
+      uploadFeedback.textContent = `File "${file.name}" siap diupload.`;
+      
+      // Simulasi upload dengan delay
+      uploadSuccess.classList.remove('show');
+      setTimeout(() => {
+        uploadSuccess.classList.add('show');
+        uploadFeedback.textContent = '';
+        fileInput.value = '';
+      }, 1500);
+    });
+
+    // --- CHATBOT ---
+    const helpBtn = document.getElementById('help-btn');
+    const chatbotModal = document.getElementById('chatbot-modal');
+    const chatbotClose = document.getElementById('chatbot-close');
+    const chatbotForm = document.getElementById('chatbot-form');
+    const chatbotInput = document.getElementById('chatbot-input');
+    const chatbotMessages = document.getElementById('chatbot-messages');
+
+    helpBtn.addEventListener('click', () => {
+      chatbotModal.classList.toggle('active');
+      if(chatbotModal.classList.contains('active')) {
+        chatbotInput.focus();
+      }
+    });
+
+    chatbotClose.addEventListener('click', () => {
+      chatbotModal.classList.remove('active');
+      helpBtn.focus();
+    });
+
+    // Simple chatbot replies
+    function botReply(message) {
+      const msg = message.toLowerCase();
+
+      if(msg.includes('halo') || msg.includes('hai')) {
+        return 'Halo! Ada yang bisa saya bantu?';
+      } else if(msg.includes('upload')) {
+        return 'Untuk upload file, silakan klik bagian Upload File Tugas dan pilih file yang ingin diunggah.';
+      } else if(msg.includes('artikel')) {
+        return 'Kamu bisa mencari artikel terbaru di bagian Artikel Terbaru dengan fitur pencarian.';
+      } else if(msg.includes('testimoni')) {
+        return 'Lihat pengalaman pengguna lain di bagian Testimoni.';
+      } else if(msg.includes('terima kasih') || msg.includes('makasih')) {
+        return 'Sama-sama! Jika ada yang ingin ditanyakan lagi, jangan ragu.';
+      } else {
+        return 'Maaf, saya belum mengerti. Bisa coba tanya dengan kata lain?';
+      }
+    }
+
+    function appendMessage(text, sender) {
+      const div = document.createElement('div');
+      div.classList.add('chatbot-message', sender);
+      div.textContent = text;
+      chatbotMessages.appendChild(div);
+      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
+
+    chatbotForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const userMsg
